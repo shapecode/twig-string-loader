@@ -1,0 +1,44 @@
+{
+    "name": "shapecode/twig-string-loader",
+    "description": "A string loader for twig",
+    "keywords": [
+        "shapecode",
+        "twig",
+        "template",
+        "string",
+        "loader"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/shapecode/twig-string-loader",
+    "support": {
+        "email": "support@shapecode.de",
+        "issues": "https://github.com/shapecode/twig-string-loader/issues",
+        "source": "https://github.com/shapecode/twig-string-loader/releases",
+        "wiki": "https://github.com/shapecode/twig-string-loader/wiki"
+    },
+    "authors": [
+        {
+            "name": "Nikita Loges",
+            "homepage": "https://loges.one",
+            "email": "dev@loges.one"
+        }
+    ],
+    "require": {
+        "php": "~7.0",
+
+        "twig/twig": "~2.11|~3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shapecode\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
