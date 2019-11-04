@@ -1,19 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Shapecode\Twig\Loader;
 
 use Twig\Loader\LoaderInterface;
 use Twig\Source;
+use function preg_match;
 
-/**
- * Class StringLoader
- *
- * @package Shapecode\Bundle\TwigStringLoaderBundle\Twig\Loader
- * @author  Nikita Loges
- */
 class StringLoader implements LoaderInterface
 {
-
     /**
      * @inheritDoc
      */
@@ -43,6 +39,6 @@ class StringLoader implements LoaderInterface
      */
     public function exists($name)
     {
-        return preg_match('/\s/', $name);
+        return (bool) preg_match('/\s/', $name);
     }
 }
