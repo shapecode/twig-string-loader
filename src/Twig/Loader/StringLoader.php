@@ -7,6 +7,7 @@ namespace Shapecode\Twig\Loader;
 use Twig\Error\LoaderError;
 use Twig\Loader\LoaderInterface;
 use Twig\Source;
+
 use function md5;
 use function preg_match;
 use function sprintf;
@@ -14,9 +15,9 @@ use function sprintf;
 class StringLoader implements LoaderInterface
 {
     /**
-     * @inheritDoc
+     * @phpstan-param string $name
      */
-    public function getSourceContext($name) : Source
+    public function getSourceContext($name): Source
     {
         if (! $this->exists($name)) {
             throw new LoaderError(sprintf('Template "%s" is not defined.', $name));
@@ -26,9 +27,9 @@ class StringLoader implements LoaderInterface
     }
 
     /**
-     * @inheritdoc
+     * @phpstan-param string $name
      */
-    public function getCacheKey($name) : string
+    public function getCacheKey($name): string
     {
         if (! $this->exists($name)) {
             throw new LoaderError(sprintf('Template "%s" is not defined.', $name));
@@ -38,9 +39,10 @@ class StringLoader implements LoaderInterface
     }
 
     /**
-     * @inheritdoc
+     * @phpstan-param string $name
+     * @phpstan-param int $time
      */
-    public function isFresh($name, $time) : bool
+    public function isFresh($name, $time): bool
     {
         if (! $this->exists($name)) {
             throw new LoaderError(sprintf('Template "%s" is not defined.', $name));
@@ -50,9 +52,9 @@ class StringLoader implements LoaderInterface
     }
 
     /**
-     * @inheritDoc
+     * @phpstan-param string $name
      */
-    public function exists($name) : bool
+    public function exists($name): bool
     {
         return (bool) preg_match('/\s/', $name);
     }

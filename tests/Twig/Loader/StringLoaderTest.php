@@ -7,37 +7,38 @@ namespace Shapecode\Tests\Twig\Loader;
 use PHPUnit\Framework\TestCase;
 use Shapecode\Twig\Loader\StringLoader;
 use Twig\Error\LoaderError;
+
 use function time;
 
 class StringLoaderTest extends TestCase
 {
-    public function testGetSourceContextWhenTemplateDoesNotExist() : void
+    public function testGetSourceContextWhenTemplateDoesNotExist(): void
     {
         $this->expectException(LoaderError::class);
         $loader = new StringLoader();
         $loader->getSourceContext('foo');
     }
 
-    public function testGetCacheKey() : void
+    public function testGetCacheKey(): void
     {
         $loader = new StringLoader();
         self::assertEquals('327b6f07435811239bc47e1544353273', $loader->getCacheKey('foo bar'));
     }
 
-    public function testGetCacheKeyWhenTemplateDoesNotExist() : void
+    public function testGetCacheKeyWhenTemplateDoesNotExist(): void
     {
         $this->expectException(LoaderError::class);
         $loader = new StringLoader();
         $loader->getCacheKey('foo');
     }
 
-    public function testIsFresh() : void
+    public function testIsFresh(): void
     {
         $loader = new StringLoader();
         self::assertTrue($loader->isFresh('foo bar', time()));
     }
 
-    public function testIsFreshWhenTemplateDoesNotExist() : void
+    public function testIsFreshWhenTemplateDoesNotExist(): void
     {
         $this->expectException(LoaderError::class);
 
@@ -45,13 +46,13 @@ class StringLoaderTest extends TestCase
         $loader->isFresh('foo', time());
     }
 
-    public function testExists() : void
+    public function testExists(): void
     {
         $loader = new StringLoader();
         self::assertTrue($loader->exists('foo bar'));
     }
 
-    public function testExistsFails() : void
+    public function testExistsFails(): void
     {
         $loader = new StringLoader();
         self::assertFalse($loader->exists('foo'));
