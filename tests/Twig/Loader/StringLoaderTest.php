@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Shapecode\Tests\Twig\Loader;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Shapecode\Twig\Loader\StringLoader;
 use Twig\Error\LoaderError;
 
 use function time;
 
+#[CoversClass(StringLoader::class)]
 class StringLoaderTest extends TestCase
 {
     public function testGetSourceContextWhenTemplateDoesNotExist(): void

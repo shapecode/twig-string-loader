@@ -14,10 +14,7 @@ use function sprintf;
 
 class StringLoader implements LoaderInterface
 {
-    /**
-     * @phpstan-param string $name
-     */
-    public function getSourceContext($name): Source
+    public function getSourceContext(string $name): Source
     {
         if (! $this->exists($name)) {
             throw new LoaderError(sprintf('Template "%s" is not defined.', $name));
@@ -26,10 +23,7 @@ class StringLoader implements LoaderInterface
         return new Source($name, $name);
     }
 
-    /**
-     * @phpstan-param string $name
-     */
-    public function getCacheKey($name): string
+    public function getCacheKey(string $name): string
     {
         if (! $this->exists($name)) {
             throw new LoaderError(sprintf('Template "%s" is not defined.', $name));
@@ -38,11 +32,7 @@ class StringLoader implements LoaderInterface
         return md5($name);
     }
 
-    /**
-     * @phpstan-param string $name
-     * @phpstan-param int $time
-     */
-    public function isFresh($name, $time): bool
+    public function isFresh(string $name, int $time): bool
     {
         if (! $this->exists($name)) {
             throw new LoaderError(sprintf('Template "%s" is not defined.', $name));
@@ -51,10 +41,8 @@ class StringLoader implements LoaderInterface
         return true;
     }
 
-    /**
-     * @phpstan-param string $name
-     */
-    public function exists($name): bool
+    /** @phpstan-param string $name */
+    public function exists(string $name): bool
     {
         return (bool) preg_match('/\s/', $name);
     }
