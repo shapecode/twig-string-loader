@@ -12,7 +12,7 @@ use function md5;
 use function preg_match;
 use function sprintf;
 
-class StringLoader implements LoaderInterface
+final readonly class StringLoader implements LoaderInterface
 {
     public function getSourceContext(string $name): Source
     {
